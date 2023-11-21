@@ -12,12 +12,16 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import { node } from "prop-types";
+import Box from '@mui/material/Box';
 
 const formControl = 
   {
     margin: 1,
     minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)"
+    backgroundColor: "rgb(255, 255, 255)",
+    borderRadius: "0.7rem",
+    display: 'inline-flex',
   };
 
 export default function FilterMoviesCard(props) {
@@ -52,53 +56,65 @@ export default function FilterMoviesCard(props) {
   return (
     <Card 
       sx={{
-        maxWidth: 345,
-        backgroundColor: "rgb(204, 204, 0)"
+        // maxWidth: 345,
+        backgroundColor: 'black',
+        display: 'flex',
+        flexWrap: "wrap",
+        justifyContent: "center",
+        marginBottom: '2rem',
+        height: '10rem',
+        width: '110%',
+        // alignItems: 'center',
+        marginLeft: '-5%',
       }} 
-      variant="outlined">
+     >
       <CardContent>
-        <Typography variant="h5" component="h1">
+        <Typography variant="h5" component="h1" sx={{color:"white"}}>
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Search/filter.
         </Typography>
-        <TextField
-      sx={{...formControl}}
-      id="filled-search"
-      label="Search field"
-      type="search"
-      variant="filled"
-      value={props.titleFilter}
-      onChange={handleTextChange}
-    />
-        <FormControl sx={{...formControl}}>
-          <InputLabel id="genre-label">Genre</InputLabel>
-          <Select
-    labelId="genre-label"
-    id="genre-select"
-    defaultValue=""
-    value={props.genreFilter}
-    onChange={handleGenreChange}
-  >
-            {genres.map((genre) => {
-              return (
-                <MenuItem key={genre.id} value={genre.id}>
-                  {genre.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+          <TextField
+              sx={{...formControl}}
+              id="filled-search"
+              label="Search field"
+              type="search"
+              variant="filled"
+              value={props.titleFilter}
+              onChange={handleTextChange}
+            />
+        <Box sx={{display:'inline-flex'}}>
+
+          <InputLabel id="genre-label" sx={{color: 'white'}}>Genre</InputLabel>
+          <FormControl sx={{...formControl}}>
+            <Select
+              labelId="genre-label"
+              id="genre-select"
+              defaultValue=""
+              value={props.genreFilter}
+              onChange={handleGenreChange}
+            >
+              {genres.map((genre) => {
+                return (
+                  <MenuItem key={genre.id} value={genre.id}>
+                    {genre.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+
+        </Box>
       </CardContent>
-      <CardMedia
+      {/* <CardMedia
         sx={{ height: 300 }}
         image={img}
         title="Filter"
-      />
+      /> */}
       <CardContent>
         <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
+          {/* <SearchIcon fontSize="large" />
           Filter the movies.
-          <br />
+          <br /> */}
         </Typography>
       </CardContent>
     </Card>

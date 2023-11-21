@@ -1,6 +1,8 @@
 // import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
@@ -16,6 +18,8 @@ import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import React, { useContext  } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { useTheme } from '@mui/material/styles';
+import { BorderAll } from "@mui/icons-material";
 
 export default function MovieCard({ movie, action }) {
   // const movie = props.movie;
@@ -27,6 +31,11 @@ export default function MovieCard({ movie, action }) {
     movie.favorite = true;
   } else {
     movie.favorite = false
+  }
+  if (toWatch.find((id) => id === movie.id)) {
+    movie.toWatch = true;
+  } else {
+    movie.toWatch = false
   }
   
   // if (toWatch.find((id) => id === movie.id)) {
@@ -46,17 +55,31 @@ export default function MovieCard({ movie, action }) {
   // };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={movie.title} />
+    <Card sx={{ maxWidth: 400, border: '2px solid black', borderRadius: '0.7rem',  transition: 'transform 0.15s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.03)',
+    },}}>
+      <CardHeader title={movie.title} sx={{textAlign: 'center'}}
+              avatar={
+                movie.favorite ? (
+                  <Avatar sx={{ backgroundColor: 'red' }}>
+                    <FavoriteIcon />
+                  </Avatar>
+                ) : movie.toWatch ? (
+                  <Avatar sx={{ backgroundColor: 'brown' }}>
+                    <PlaylistAddCheckIcon />
+                  </Avatar>
+                ) : null}
+      />
       <CardMedia
-        sx={{ height: 500 }}
+        sx={{ height: 500, borderTop: '2px solid black', borderBottom: '2px solid black'}}
         image={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
             : img
         }
       />
-      <CardContent>
+      <CardContent> 
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
@@ -66,14 +89,14 @@ export default function MovieCard({ movie, action }) {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
+              <StarRateIcon  fontSize="small" />
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {action(movie)}
+        {action(movie, favorites)}
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
