@@ -1,14 +1,14 @@
-// import React from "react";
-import Chip from "@mui/material/Chip";
-import Paper from "@mui/material/Paper";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
-import StarRate from "@mui/icons-material/StarRate";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import Fab from "@mui/material/Fab";
-import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
-import Drawer from "@mui/material/Drawer";
+// import React from "react"
+import Chip from "@mui/material/Chip"
+import Paper from "@mui/material/Paper"
+import AccessTimeIcon from "@mui/icons-material/AccessTime"
+import MonetizationIcon from "@mui/icons-material/MonetizationOn"
+import StarRate from "@mui/icons-material/StarRate"
+import NavigationIcon from "@mui/icons-material/Navigation"
+import Fab from "@mui/material/Fab"
+import Typography from "@mui/material/Typography"
+import React, { useState } from "react"
+import Drawer from "@mui/material/Drawer"
 import MovieReviews from "../movieReviews"
 
 
@@ -20,11 +20,11 @@ const root = {
     listStyle: "none",
     padding: 1.5,
     margin: 0,
-};
-const chip = { margin: 0.5 };
+}
+const chip = { margin: 0.5 }
 
 const MovieDetails = ({ movie }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   return (
     <>
@@ -90,6 +90,6 @@ const MovieDetails = ({ movie }) => {
         <MovieReviews movie={movie} />
       </Drawer>
       </>
-  );
-};
-export default MovieDetails ;
+  )
+}
+export default MovieDetails 

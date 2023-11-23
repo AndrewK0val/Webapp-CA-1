@@ -1,65 +1,65 @@
-// import React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+// import React from "react"
+import Card from "@mui/material/Card"
+import CardActions from "@mui/material/CardActions"
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck'
 
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import CardHeader from "@mui/material/CardHeader";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import Avatar from '@mui/material/Avatar';
-import IconButton from "@mui/material/IconButton";
-import Grid from "@mui/material/Grid";
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia"
+import CardHeader from "@mui/material/CardHeader"
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
+import FavoriteIcon from "@mui/icons-material/Favorite"
+import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone"
+import StarRateIcon from "@mui/icons-material/StarRate"
+import Avatar from '@mui/material/Avatar'
+import IconButton from "@mui/material/IconButton"
+import Grid from "@mui/material/Grid"
 import img from '../../images/film-poster-placeholder.png'
-import { Link } from "react-router-dom";
-import React, { useContext  } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
-import { useTheme } from '@mui/material/styles';
-import { BorderAll } from "@mui/icons-material";
+import { Link } from "react-router-dom"
+import React, { useContext  } from "react"
+import { MoviesContext } from "../../contexts/moviesContext"
+import { useTheme } from '@mui/material/styles'
+import { BorderAll } from "@mui/icons-material"
+import { createTheme, ThemeProvider } from '@mui/material'
 
 export default function MovieCard({ movie, action }) {
-  // const movie = props.movie;
+  // const movie = props.movie
 
-  const { favorites, addToFavorites } = useContext(MoviesContext);
-  const { toWatch, addToWatch } = useContext(MoviesContext);
+  const { favorites, addToFavorites } = useContext(MoviesContext)
+  const { toWatch, addToWatch } = useContext(MoviesContext)
 
   if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
+    movie.favorite = true
   } else {
     movie.favorite = false
   }
   if (toWatch.find((id) => id === movie.id)) {
-    movie.toWatch = true;
+    movie.toWatch = true
   } else {
     movie.toWatch = false
   }
   
   // if (toWatch.find((id) => id === movie.id)) {
-  //   movie.toWatch = true;
+  //   movie.toWatch = true
   // } else {
   //   movie.toWatch = false
   // }
 
   const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+    e.preventDefault()
+    addToFavorites(movie)
+  }
 
   // const handleAddToWatch = (e) => {
-  //   e.preventDefault();
-  //   addToWatch(movie);
-  // };
-
+  //   e.preventDefault()
+  //   addToWatch(movie)
+  // }
   return (
     <Card sx={{ maxWidth: 400, border: '2px solid black', borderRadius: '0.7rem',  transition: 'transform 0.15s ease-in-out',
     '&:hover': {
       transform: 'scale(1.03)',
     },}}>
-      <CardHeader title={movie.title} sx={{textAlign: 'center'}}
+      <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}
               avatar={
                 movie.favorite ? (
                   <Avatar sx={{ backgroundColor: 'red' }}>
@@ -104,5 +104,5 @@ export default function MovieCard({ movie, action }) {
         </Link>
       </CardActions>
     </Card>
-  );
+  )
 }

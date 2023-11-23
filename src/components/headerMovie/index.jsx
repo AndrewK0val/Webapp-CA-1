@@ -1,13 +1,13 @@
-import React from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
+import React from "react"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
+import Paper from "@mui/material/Paper"
+import IconButton from "@mui/material/IconButton"
+import Typography from "@mui/material/Typography"
+import HomeIcon from "@mui/icons-material/Home"
 
 const MovieHeader = (props) => {
-  const movie = props.movie;
+  const movie = props.movie
 
   return (
     <Paper 
@@ -36,7 +36,7 @@ const MovieHeader = (props) => {
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>
-  );
-};
+  )
+}
 
-export default MovieHeader;
+export default MovieHeader

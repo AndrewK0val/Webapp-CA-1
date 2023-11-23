@@ -14,6 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 import { useTheme } from '@mui/material/styles'
 import PersonIcon from '@mui/icons-material/Person'
 
+
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 
@@ -57,8 +58,8 @@ const SiteHeader = ({ history }) => {
   return (
     <>
       <AppBar position="fixed" color="secondary">
-        <Toolbar  sx={{ backgroundColor: '#eb7067' }}>
-          <Typography variant="h4" sx={{ flexGrow: 1 }}>
+        <Toolbar  sx={{ backgroundColor: '#eb7067', }}>
+          <Typography variant="h4" sx={{ flexGrow: 1,  }}>
             TMDB Client
           </Typography>
 

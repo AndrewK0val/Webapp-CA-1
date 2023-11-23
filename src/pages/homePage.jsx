@@ -9,7 +9,7 @@ const HomePage = (props) => {
   // let page = null;
 
   const {  data, error, isLoading, isError }  = useQuery('discover', ()=> getMovies(page))
-  const [page, setPage] = React.useState(4);
+  const [page, setPage] = React.useState(1);
    
   if (isLoading) {
     return <Spinner />

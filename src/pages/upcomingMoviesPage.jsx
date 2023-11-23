@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import PageTemplate from '../components/templateMovieListPage'
-import { getUpcomingMovies } from "../api/tmdb-api";
+import { getUpcomingMovies } from "../api/tmdb-api"
 import AddToWatch from '../components/cardIcons/addToWatch'
-import Spinner from '../components/spinner';
-import { isError, useQuery } from "react-query";
+import Spinner from '../components/spinner'
+import { isError, useQuery } from "react-query"
 
 
 const UpcomingMoviePage = (props) => {
@@ -18,7 +18,7 @@ const UpcomingMoviePage = (props) => {
         return <h1>{error.message}</h1>
     }
 
-    const upcomingMovies = data.results;
+    const upcomingMovies = data.results
 
 
     return (
@@ -29,7 +29,7 @@ const UpcomingMoviePage = (props) => {
             return <AddToWatch movie={movie} />
           }}
         />
-      );
-    };
+      )
+    }
 
-export default UpcomingMoviePage;
+export default UpcomingMoviePage

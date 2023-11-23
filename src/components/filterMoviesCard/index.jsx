@@ -1,19 +1,19 @@
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import Card from "@mui/material/Card"
+import CardMedia from "@mui/material/CardMedia"
+import CardContent from "@mui/material/CardContent"
+import Typography from "@mui/material/Typography"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import TextField from "@mui/material/TextField"
+import SearchIcon from "@mui/icons-material/Search"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
-import { getGenres } from "../../api/tmdb-api";
-import { useQuery } from "react-query";
+import { getGenres } from "../../api/tmdb-api"
+import { useQuery } from "react-query"
 import Spinner from '../spinner'
-import { node } from "prop-types";
-import Box from '@mui/material/Box';
+import { node } from "prop-types"
+import Box from '@mui/material/Box'
 
 const formControl = 
   {
@@ -22,36 +22,36 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)",
     borderRadius: "0.7rem",
     display: 'inline-flex',
-  };
+  }
 
 export default function FilterMoviesCard(props) {
 
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres)
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {
-    return <h1>{error.message}</h1>;
+    return <h1>{error.message}</h1>
   }
-  const genres = data.genres;
+  const genres = data.genres
   if (genres[0].name !== "All"){
-    genres.unshift({ id: "0", name: "All" });
+    genres.unshift({ id: "0", name: "All" })
   }
 
   const handleChange = (e, type, value) => {
-    e.preventDefault();
-    props.onUserInput(type, value); // NEW
-  };
+    e.preventDefault()
+    props.onUserInput(type, value) // NEW
+  }
 
   const handleTextChange = (e, props) => {
-    handleChange(e, "name", e.target.value);
-  };
+    handleChange(e, "name", e.target.value)
+  }
 
   const handleGenreChange = (e) => {
-    handleChange(e, "genre", e.target.value);
-  };
+    handleChange(e, "genre", e.target.value)
+  }
 
   return (
     <Card 
@@ -98,7 +98,7 @@ export default function FilterMoviesCard(props) {
                   <MenuItem key={genre.id} value={genre.id}>
                     {genre.name}
                   </MenuItem>
-                );
+                )
               })}
             </Select>
           </FormControl>
@@ -118,5 +118,5 @@ export default function FilterMoviesCard(props) {
         </Typography>
       </CardContent>
     </Card>
-  );
+  )
 }

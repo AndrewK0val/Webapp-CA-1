@@ -1,33 +1,33 @@
-import React, { useContext, useState, useEffect } from "react";
-import { MoviesContext } from "../../contexts/moviesContext";
-import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import React, { useContext, useState, useEffect } from "react"
+import { MoviesContext } from "../../contexts/moviesContext"
+import IconButton from "@mui/material/IconButton"
+import FavoriteIcon from "@mui/icons-material/Favorite"
 
 
 const AddToFavoritesIcon = ({ movie }) => {
-  const context = useContext(MoviesContext);
+  const context = useContext(MoviesContext)
   const [clickedCards, setClickedCards] = useState(
     () => JSON.parse(localStorage.getItem('clickedCards')) || {}
-  );
+  )
 
   useEffect(() => {
     window.onbeforeunload = () => {
-      localStorage.removeItem('clickedCards');
-    };
-  }, []);
+      localStorage.removeItem('clickedCards')
+    }
+  }, [])
 
   const handleClick = () => {
     setClickedCards(prevState => ({
       ...prevState,
       [movie.id]: !prevState[movie.id],
-    }));
-  };
+    }))
+  }
 
 
   const handleAddToFavorites = (e) => {
-    e.preventDefault();
-    context.addToFavorites(movie);
-  };
+    e.preventDefault()
+    context.addToFavorites(movie)
+  }
 
   return (
     <IconButton aria-label="add to favorites" onClick={handleAddToFavorites}>
@@ -37,7 +37,7 @@ const AddToFavoritesIcon = ({ movie }) => {
         sx={{ color: clickedCards[movie.id] ? 'red' : 'gray' }}
       />
     </IconButton>
-  );
-};
+  )
+}
 
-export default AddToFavoritesIcon;
+export default AddToFavoritesIcon
