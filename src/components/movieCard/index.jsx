@@ -38,6 +38,24 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.toWatch = false
   }
+
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        light: '#757ce8',
+        main: '#3f50b5',
+        dark: '#002884',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
+        contrastText: '#000',
+      },
+    },
+  });
   
   // if (toWatch.find((id) => id === movie.id)) {
   //   movie.toWatch = true
@@ -55,9 +73,17 @@ export default function MovieCard({ movie, action }) {
   //   addToWatch(movie)
   // }
   return (
-    <Card sx={{ maxWidth: 400, border: '2px solid black', borderRadius: '0.7rem',  transition: 'transform 0.15s ease-in-out','&:hover': {
-      transform: 'scale(1.03)',
-    },}}>
+    <Card sx={{ maxWidth: 400, 
+      backgroundColor: '#e0e0e0',
+      border: '2px solid transparent',
+      borderImage: 'linear-gradient(to right, darkblue, darkorchid) borderBox',
+      borderRadius: '0.7rem',
+      transition: 'transform 0.15s ease-in-out',
+      '&:hover': {
+        transform: 'scale(1.03)'},    
+      boxShadow:  '-7px -7px 19px #a4a4a4, 7px 7px 19px #ffffff;'
+      }}>
+
       <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}
               avatar={
                 movie.favorite ? (
@@ -97,8 +123,8 @@ export default function MovieCard({ movie, action }) {
       <CardActions disableSpacing>
         {action(movie, favorites)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" color="primary">
-            More Info ...
+          <Button variant="outlined" size="medium" sx={{color: 'black', border:'2px solid black', fontFamily:'sans-serif', fontWeight:'bold'}}>
+            More Info
           </Button>
         </Link>
       </CardActions>
