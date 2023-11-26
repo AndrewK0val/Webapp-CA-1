@@ -55,8 +55,7 @@ export default function MovieCard({ movie, action }) {
   //   addToWatch(movie)
   // }
   return (
-    <Card sx={{ maxWidth: 400, border: '2px solid black', borderRadius: '0.7rem',  transition: 'transform 0.15s ease-in-out',
-    '&:hover': {
+    <Card sx={{ maxWidth: 400, border: '2px solid black', borderRadius: '0.7rem',  transition: 'transform 0.15s ease-in-out','&:hover': {
       transform: 'scale(1.03)',
     },}}>
       <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}
