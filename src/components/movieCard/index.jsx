@@ -83,6 +83,7 @@ export default function MovieCard({ movie, action }) {
         transform: 'scale(1.03)'},    
       boxShadow:  '-7px -7px 19px #a4a4a4, 7px 7px 19px #ffffff;'
       }}>
+
       <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}
               avatar={
                 movie.favorite ? (
