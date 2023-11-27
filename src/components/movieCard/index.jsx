@@ -75,8 +75,8 @@ export default function MovieCard({ movie, action }) {
   return (
     <Card sx={{ maxWidth: 400, 
       backgroundColor: '#e0e0e0',
-      border: '2px solid transparent',
-      borderImage: 'linear-gradient(to right, darkblue, darkorchid) borderBox',
+      border: '1px solid #f0f0f0',
+      // borderImage: 'linear-gradient(to right, darkblue, darkorchid) borderBox',
       borderRadius: '0.7rem',
       transition: 'transform 0.15s ease-in-out',
       '&:hover': {
@@ -123,7 +123,7 @@ export default function MovieCard({ movie, action }) {
       <CardActions disableSpacing>
         {action(movie, favorites)}
         <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" sx={{color: 'black', border:'2px solid black', fontFamily:'sans-serif', fontWeight:'bold'}}>
+          <Button variant="outlined" size="medium" sx={{color: 'grey', border:'2px solid grey', fontFamily:'sans-serif', fontWeight:'bold'}}>
             More Info
           </Button>
         </Link>

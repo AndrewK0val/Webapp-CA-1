@@ -6,6 +6,8 @@ const MoviesContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
 
   const [toWatch, setToWatch] = useState( [] )
+
+  const [page, setPage] = useState([])
   
   const [myReviews, setMyReviews] = useState( {} ) 
 

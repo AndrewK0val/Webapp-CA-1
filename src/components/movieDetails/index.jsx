@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography"
 import React, { useState } from "react"
 import Drawer from "@mui/material/Drawer"
 import MovieReviews from "../movieReviews"
+import Button from "@mui/material/Button"
+import { Link } from "react-router-dom"
 
 
 
@@ -71,8 +73,12 @@ const MovieDetails = ({ movie }) => {
         <Chip
           label={ movie.production_countries[0].name}
         />
-
       </Paper>
+      <Link to={`/movies/similar-to/${movie.id}`} style={{ textDecoration: 'none' }}>
+          <Button variant="contained" color="primary" style={{ marginTop: '16px' }}>
+             View Similar
+        </Button>
+      </Link>
       <Fab
         color="secondary"
         variant="extended"
