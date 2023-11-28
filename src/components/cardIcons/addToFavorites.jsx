@@ -5,10 +5,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite"
 
 
 const AddToFavoritesIcon = ({ movie }) => {
-  const context = useContext(MoviesContext)
-  const [clickedCards, setClickedCards] = useState(
-    () => JSON.parse(localStorage.getItem('clickedCards')) || {}
-  )
+  const { favorites, addToFavorites } = useContext(MoviesContext)
+  
+
+  if (favorites.find((id) => id === movie.id)) {
+    movie.favorite = true
+  } else {
+    movie.favorite = false
+  }
+
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -16,25 +21,20 @@ const AddToFavoritesIcon = ({ movie }) => {
     }
   }, [])
 
-  const handleClick = () => {
-    setClickedCards(prevState => ({
-      ...prevState,
-      [movie.id]: !prevState[movie.id],
-    }))
-  }
 
 
-  const handleAddToFavorites = (e) => {
+
+  const handleAddToFavorite = (e) => {
     e.preventDefault()
-    context.addToFavorites(movie)
+    addToFavorites(movie)
   }
 
   return (
-    <IconButton aria-label="add to favorites" onClick={handleAddToFavorites}>
+    <IconButton aria-label="add to favorites" onClick={handleAddToFavorite}>
       <FavoriteIcon
         color="primary"
         fontSize="large"
-        sx={{ color: clickedCards[movie.id] ? 'red' : 'gray' }}
+        sx={{ color: movie.favorite ? '#a3031e' : 'gray' }}
       />
     </IconButton>
   )

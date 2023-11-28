@@ -3,17 +3,17 @@ import PageTemplate from "../components/templateMovieListPage"
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
-import { getSimilarMovies } from '../api/tmdb-api'
+import { getSimilarMovies, getMovie } from '../api/tmdb-api'
 import { useParams } from 'react-router-dom'
-
 
 const SimilarMoviesPage = () => {
 
   const { id } = useParams()
   const { data: similar, error, isLoading, isError } = useQuery( ["similar", { id: id }], getSimilarMovies)
+  const { data: movie, isLoading: isMovieLoading } = useQuery(['movie', { id: id }], getMovie)
 
   if (isError) return <h1>{error.message}</h1>
-  if (isLoading) return <Spinner/>
+  if (isLoading || isMovieLoading) return <Spinner/>
   
   const movies = similar.results  
   const favorites = movies.filter(m => m.favorite)
@@ -27,7 +27,7 @@ const SimilarMoviesPage = () => {
       {similar ? (
         <>
           <PageTemplate
-          title="Similar Movies"
+          title={`Similar to: ${movie.title}`}
           movies={movies}
               action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />

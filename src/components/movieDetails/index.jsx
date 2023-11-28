@@ -12,6 +12,8 @@ import Drawer from "@mui/material/Drawer"
 import MovieReviews from "../movieReviews"
 import Button from "@mui/material/Button"
 import { Link } from "react-router-dom"
+import HomeIcon from "@mui/icons-material/Home"
+
 
 
 
@@ -50,6 +52,10 @@ const MovieDetails = ({ movie }) => {
             <Chip label={g.name} sx={{...chip}} />
           </li>
         ))}
+
+        <a href={movie.homepage}>
+          <HomeIcon color="primary" />
+        </a>
       </Paper>
       <Paper component="ul" sx={{...root}}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
@@ -75,10 +81,17 @@ const MovieDetails = ({ movie }) => {
         />
       </Paper>
       <Link to={`/movies/similar-to/${movie.id}`} style={{ textDecoration: 'none' }}>
-          <Button variant="contained" color="primary" style={{ marginTop: '16px' }}>
+          <Button variant="contained" color="primary" style={{ marginTop: '16px', marginRight:'2rem' }}>
              View Similar
         </Button>
       </Link>
+
+      <Link to={`/actors/staring-in/${movie.id}`} style={{ textDecoration: 'none' }}>
+          <Button variant="contained" color="primary" style={{ marginTop: '16px' }}>
+             View Cast
+        </Button>
+      </Link>
+      
       <Fab
         color="secondary"
         variant="extended"

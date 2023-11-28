@@ -36,8 +36,8 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>
   }
   const genres = data.genres
-  if (genres[0].name !== "All"){
-    genres.unshift({ id: "0", name: "All" })
+  if (genres[0].name !== "Select Genre"){
+    genres.unshift({ id: "0", name: "Select Genre" })
   }
 
   const handleChange = (e, type, value) => {
@@ -68,11 +68,12 @@ export default function FilterMoviesCard(props) {
         width: '110%',
         alignItems: 'baseline',
         marginLeft: '-5%',
+        transform:'translateY(-.5rem)',
       }} 
      >
 
 
-      <Typography variant="h5" component="h1" sx={{color:'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Typography variant="h5" component="h1" sx={{color:'white', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop:'1rem', fontFamily:'Merriweather' }}>
           <SearchIcon fontSize="large" />
           Search/filter.
       </Typography>
@@ -99,12 +100,13 @@ export default function FilterMoviesCard(props) {
 
           <Box sx={{display:'inline-flex'}}>
 
-            <InputLabel id="genre-label" sx={{color: 'white'}}>Genre</InputLabel>
+            {/* <InputLabel id="genre-label" sx={{color: 'white'}}>Genre</InputLabel> */}
             <FormControl sx={{...formControl}}>
               <Select
                 labelId="genre-label"
                 id="genre-select"
                 defaultValue=""
+                placeholder="Select Genre"
                 value={props.genreFilter}
                 onChange={handleGenreChange}
               >

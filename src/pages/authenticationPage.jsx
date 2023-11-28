@@ -108,20 +108,20 @@ export default function LoginOrSignupPage() {
                     </>
                 ):(
                     <>
-                    <Typography variant="h4" sx={{ marginBottom: '2rem' }}> Register User </Typography>
+                    <Typography variant="h4" sx={{ marginBottom: '1rem', marginTop: '1rem', fontFamily:'Merriweather' }}> Sign up </Typography>
                     <TextField
                         placeholder="Email..."
                         onChange={(event) => {
                             setRegisterEmail(event.target.value);
                         }}
-                        sx={{ marginBottom: '1rem' }}
+                        sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
                     />
                     <TextField
                         placeholder="Password..."
                         onChange={(event) => {
                             setRegisterPassword(event.target.value);
                         }}
-                        sx={{ marginBottom: '1rem' }}
+                        sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
                     />
         
                     <Button variant="contained" color="primary" onClick={register}> Create User</Button>
@@ -132,23 +132,24 @@ export default function LoginOrSignupPage() {
                         </Alert>
                     </Snackbar>
     
-                    <Typography variant="h4" sx={{ marginBottom: '1rem', marginTop:'2rem' }}> Login </Typography>
+                    <Typography variant="h4" sx={{ marginBottom: '1rem', marginTop:'2rem' ,fontFamily:'Merriweather' }}> Login </Typography>
                     <TextField
                         placeholder="Email..."
                         onChange={(event) => {
                             setLoginEmail(event.target.value);
                         }}
-                        sx={{ marginBottom: '1rem' }}
+                        sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
                     />
                     <TextField
                         placeholder="Password..."
                         onChange={(event) => {
                             setLoginPassword(event.target.value);
                         }}
-                        sx={{ marginBottom: '1rem' }}
+                        sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
+                        
                     />
         
-                    <Button variant="contained" color="primary" onClick={login}> Login</Button>
+                    <Button variant="contained" color="primary" sx={{marginBottom:'6rem'}} onClick={login}> Login</Button>
                     <Snackbar open={loginError !== null} autoHideDuration={6000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
                             Invalid email or password!

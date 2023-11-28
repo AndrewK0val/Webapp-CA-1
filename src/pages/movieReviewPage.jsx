@@ -15,3 +15,4 @@ const MovieReviewPage = (props) => {
 }
 
 export default MovieReviewPage
+

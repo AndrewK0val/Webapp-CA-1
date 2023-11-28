@@ -28,15 +28,16 @@ const HomePage = (props) => {
 
   return (
     <>
-      <Pagination count={10} variant="outlined" color="secondary" page={page} onChange={(event, value) => setPage(value)} />
       <PageTemplate
         title="Discover Movies"
         movies={movies}
         page={page}
+        setPage={setPage}
         action={(movie) => {
           return <AddToFavoritesIcon movie={movie} />
         }}
       />
+        {/* <Pagination count={10} variant="outlined" color="secondary" page={page} onChange={(event, value) => setPage(value)} /> */}
     </>
   )
 }

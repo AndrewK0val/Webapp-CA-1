@@ -21,7 +21,7 @@ import { MoviesContext } from "../../contexts/moviesContext"
 import { useTheme } from '@mui/material/styles'
 import { BorderAll } from "@mui/icons-material"
 import { createTheme, ThemeProvider } from '@mui/material'
-
+import Rating from '@mui/material/Rating';
 export default function MovieCard({ movie, action }) {
   // const movie = props.movie
 
@@ -75,16 +75,16 @@ export default function MovieCard({ movie, action }) {
   return (
     <Card sx={{ maxWidth: 400, 
       backgroundColor: '#e0e0e0',
-      border: '1px solid #f0f0f0',
+      border: '3px solid #f0f0f0',
       // borderImage: 'linear-gradient(to right, darkblue, darkorchid) borderBox',
-      borderRadius: '0.7rem',
+      borderRadius: '0.9rem',
       transition: 'transform 0.15s ease-in-out',
       '&:hover': {
         transform: 'scale(1.03)'},    
       boxShadow:  '-7px -7px 19px #a4a4a4, 7px 7px 19px #ffffff;'
       }}>
 
-      <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily: 'Merriweather, serif'}}
+      {/* <CardHeader title={movie.title} sx={{textAlign: 'center', fontFamily:'Bebas Neue', fontWeight:'bold'}}
               avatar={
                 movie.favorite ? (
                   <Avatar sx={{ backgroundColor: 'red' }}>
@@ -95,9 +95,15 @@ export default function MovieCard({ movie, action }) {
                     <PlaylistAddCheckIcon />
                   </Avatar>
                 ) : null}
-      />
+      /> */}
+    <Typography sx={{textAlign: 'center', color:'#35354f', fontFamily:'Bebas Neue', fontSize:'23pt', padding:'0.1rem'}} >
+      
+        {movie.title}
+    </Typography>
+
+
       <CardMedia
-        sx={{ height: 500, borderTop: '2px solid black', borderBottom: '2px solid black'}}
+        sx={{ height: 500, borderTop: '3px solid #ffffff', borderBottom: '3px solid #ffffff', zIndex: '100'}}
         image={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
@@ -105,29 +111,30 @@ export default function MovieCard({ movie, action }) {
         }
       />
       <CardContent> 
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
+        <Grid container sx={{display:'flex', justifyContent:'center'}}>
+          {/* <Grid item xs={6}> */}
+            <Typography variant="h6"  >
               <CalendarIcon fontSize="small" />
-              {movie.release_date}
+              {" "}{movie.release_date}
             </Typography>
-          </Grid>
-          <Grid item xs={6}>
+          {/* </Grid> */}
+          {/* <Grid item xs={6}> */}
             <Typography variant="h6" component="p">
-              <StarRateIcon  fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
+            <Rating name="read-only" value={movie.vote_average} max={10} size="small" readOnly />
+              {/* <StarRateIcon  fontSize="small" />
+              {"  "} {movie.vote_average}{" "} */}
             </Typography>
-          </Grid>
+          {/* </Grid> */}
+          <CardActions >
+            <Link to={`/movies/${movie.id}`}>
+              <Button variant="outlined" size="medium" sx={{color: 'grey', border:'2px solid grey', fontFamily:'sans-serif', fontWeight:'bold'}}>
+                More Info
+              </Button>
+            </Link>
+          </CardActions>
         </Grid>
-      </CardContent>
-      <CardActions disableSpacing>
         {action(movie, favorites)}
-        <Link to={`/movies/${movie.id}`}>
-          <Button variant="outlined" size="medium" sx={{color: 'grey', border:'2px solid grey', fontFamily:'sans-serif', fontWeight:'bold'}}>
-            More Info
-          </Button>
-        </Link>
-      </CardActions>
+      </CardContent>
     </Card>
   )
 }

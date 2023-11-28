@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles'
 import useMediaQuery from "@mui/material/useMediaQuery"
 import { useTheme } from '@mui/material/styles'
 import PersonIcon from '@mui/icons-material/Person'
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
@@ -42,7 +43,7 @@ const SiteHeader = ({ history }) => {
     { label: "Upcoming Movies", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/topRated" },
     { label: "Popular", path: "/movies/popular" },
-    { label: "login", path: "/authentication" },
+    { label: "Login / Signup", path: "/authentication" },
   ]
 
   const handleMenuSelect = (pageURL) => {
@@ -57,10 +58,12 @@ const SiteHeader = ({ history }) => {
 
   return (
     <>
-      <AppBar position="fixed" color="secondary">
-        <Toolbar  sx={{ backgroundColor: '#eb7067', }}>
-          <Typography variant="h4" sx={{ flexGrow: 1,  }}>
+      <AppBar position="fixed" color="secondary" sx={{}}>
+        <Toolbar  sx={{ backgroundColor: '#c71a37', border:'4px solid black', boxShadow:'-2px 6px 29px 8px rgba(0,0,0,0.6)' }}>
+          <Typography variant="h4" sx={{ flexGrow: 1, fontFamily:'Bebas Neue'  }}>
+          <LocalMoviesIcon sx={{ fontSize: 40, transform:'translateY(0.5rem)' }} />
             TMDB Client
+            <LocalMoviesIcon sx={{ fontSize: 40, transform:'translateY(0.5rem)' }} />
           </Typography>
 
             {isMobile ? (

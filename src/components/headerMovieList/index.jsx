@@ -20,18 +20,19 @@ const Header = (props ) => {
         height: "7rem",
         alignItems: "center",
         marginBottom: '2rem',
+        transform:'translateY(-2.5rem)'
       }}
       >
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
-        <ArrowBackIcon color="primary" fontSize="large" />
+        <ArrowBackIcon  fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3">
+      <Typography variant="h4" component="h3" sx={{fontFamily:'Bebas Neue', fontSize:'40pt'}}>
         {title}
       </Typography>
       <IconButton aria-label="go forward" onClick={() => navigate(-1) } >
 
-        <ArrowForwardIcon color="primary" fontSize="large" />
+        <ArrowForwardIcon  fontSize="large" />
       </IconButton>
     </Paper>
   )

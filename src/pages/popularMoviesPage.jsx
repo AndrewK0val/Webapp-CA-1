@@ -7,7 +7,9 @@ import { useQuery } from "react-query";
 
 
 const PopularMoviesPage = (props) => {
-    const {data, error, isLoading, isError } = useQuery('popular', getPopularMovies)
+    // const {data, error, isLoading, isError } = useQuery('popular', getPopularMovies)
+    const [page, setPage] = React.useState(1)
+    const {  data, error, isLoading, isError }  = useQuery(['popular', page], ()=> getPopularMovies(page), { keepPreviousData : true })   
 
 
     if(isLoading){
@@ -24,6 +26,8 @@ const PopularMoviesPage = (props) => {
         <PageTemplate
             title='Popular Movies'
             movies={popularMovies}
+            page={page}
+            setPage={setPage}
             action={(movie) => {
                 return <AddToWatch movie={movie}/>
             }}
