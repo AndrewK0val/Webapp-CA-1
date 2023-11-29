@@ -42,6 +42,8 @@ export default function LoginOrSignupPage() {
     const [user, setUser] = useState({});
     const [loginError, setLoginError] = useState(null);
     const [registerSuccess, setRegisterSuccess] = useState(null);
+    const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
+    const [registerError, setRegisterError] = useState(null);
 
 
 
@@ -49,7 +51,26 @@ export default function LoginOrSignupPage() {
         setUser(currentUser);
     });
 
+    // const register = async () => {
+    //     try {
+    //         const user = await createUserWithEmailAndPassword(
+    //             auth,
+    //             registerEmail,
+    //             registerPassword
+    //         );
+    //         console.log(user);
+    //         setRegisterSuccess("Account successfully created!");
+    //     } catch (error) {
+    //         console.log(error.message);
+    //     }
+    // };
+
     const register = async () => {
+        if (registerPassword !== registerConfirmPassword) {
+            setRegisterError("Passwords do not match!");
+            return;
+        }
+    
         try {
             const user = await createUserWithEmailAndPassword(
                 auth,
@@ -117,9 +138,18 @@ export default function LoginOrSignupPage() {
                         sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
                     />
                     <TextField
+                        type='password'
                         placeholder="Password..."
                         onChange={(event) => {
                             setRegisterPassword(event.target.value);
+                        }}
+                        sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
+                    />
+                    <TextField
+                        type='password'
+                        placeholder=" Confirm Password"
+                        onChange={(event) => {
+                            setRegisterConfirmPassword(event.target.value);
                         }}
                         sx={{ marginBottom: '1rem', borderRadius: '5px', boxShadow:'5px 5px 14px #bebebe,-5px -5px 14px #ffffff' }}
                     />
@@ -129,6 +159,11 @@ export default function LoginOrSignupPage() {
                     <Snackbar open={registerSuccess !== null} autoHideDuration={6000} onClose={handleRegisterClose}>
                         <Alert onClose={handleRegisterClose} severity="success" sx={{ width: '100%' }}>
                             {registerSuccess}
+                        </Alert>
+                    </Snackbar>
+                    <Snackbar open={registerError !== null} autoHideDuration={6000} onClose={() => setRegisterError(null)}>
+                        <Alert onClose={() => setRegisterError(null)} severity="error" sx={{ width: '100%' }}>
+                            {registerError}
                         </Alert>
                     </Snackbar>
     
@@ -142,6 +177,7 @@ export default function LoginOrSignupPage() {
                     />
                     <TextField
                         placeholder="Password..."
+                        type='password'
                         onChange={(event) => {
                             setLoginPassword(event.target.value);
                         }}
